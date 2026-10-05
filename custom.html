@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Custom Orders — Connecting Dots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAF8F3; --ink: #211F1C; --ink-soft: #55504A;
+    --indigo: #2E3A59; --gold: #B8902B; --card: #F1EDE3; --line: #DDD6C8;
+    padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  body { margin:0; background: var(--bg); color: var(--ink); font-family:'Inter',-apple-system,sans-serif; line-height:1.5; }
+  h1,h2,h3,.serif { font-family:'Fraunces', Georgia, serif; }
+  a { color: inherit; } img { max-width:100%; display:block; }
+  .wrap { max-width: 1120px; margin:0 auto; padding:0 28px; }
+  header { position: sticky; top:0; top: env(safe-area-inset-top,0px); z-index:10; background: rgba(250,248,243,0.92); backdrop-filter: blur(6px); border-bottom:1px solid var(--line); }
+  nav.wrap { display:flex; align-items:center; justify-content:space-between; padding:18px 28px; }
+  .logo { font-size:1.25rem; font-weight:600; letter-spacing:-0.01em; text-decoration:none; color:var(--ink); }
+  nav ul { list-style:none; display:flex; gap:28px; margin:0; padding:0; }
+  nav a.navlink { text-decoration:none; font-size:0.95rem; color: var(--ink-soft); }
+  nav a.navlink:hover, nav a.navlink.active { color: var(--ink); }
+  .btn { display:inline-block; background: var(--indigo); color:#fff; padding:13px 26px; border-radius:2px; text-decoration:none; font-size:0.95rem; font-weight:500; }
+  .btn:hover { background:#24304A; }
+  .page-hero { padding: 64px 0 40px; border-bottom:1px solid var(--line); }
+  .page-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight:400; margin:0 0 14px; }
+  .page-hero p { color: var(--ink-soft); max-width: 56ch; margin:0; }
+  .grid { display:grid; grid-template-columns: repeat(3,1fr); gap:28px; padding: 56px 0; }
+  .grid.small { grid-template-columns: repeat(2,1fr); }
+  .product { background: var(--card); border:1px solid var(--line); }
+  .product .frame { aspect-ratio: 4/5; background:#E4DECE; overflow:hidden; }
+  .product .frame img { width:100%; height:100%; object-fit:cover; }
+  .product .info { padding: 18px 20px 20px; }
+  .product h3 { font-size:1.05rem; font-weight:500; margin:0 0 6px; }
+  .product .desc { color: var(--ink-soft); font-size:0.88rem; margin:0 0 14px; }
+  .product .row { display:flex; align-items:center; justify-content:space-between; }
+  .price { font-family:'Fraunces', serif; font-size:1.15rem; }
+  .buy { font-size:0.85rem; font-weight:500; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:1px; }
+  .buy:hover { color: var(--gold); }
+  .cat-section { padding: 56px 0; border-top:1px solid var(--line); }
+  .cat-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+  .cat-head h2 { font-size:1.7rem; font-weight:400; margin:0; }
+  .cat-head a { font-size:0.9rem; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:1px; color: var(--ink-soft); }
+  .steps { display:grid; grid-template-columns: repeat(3,1fr); gap:28px; padding: 16px 0 56px; }
+  .step { border:1px solid var(--line); background:var(--card); padding:24px; }
+  .step .num { font-family:'Fraunces',serif; font-size:1.6rem; color:var(--gold); margin-bottom:8px; }
+  .step h3 { margin:0 0 8px; font-size:1.05rem; }
+  .step p { margin:0; color:var(--ink-soft); font-size:0.9rem; }
+  footer { border-top:1px solid var(--line); padding:36px 0 48px; padding-bottom:calc(48px + env(safe-area-inset-bottom,0px)); }
+  footer .wrap { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  footer p { color: var(--ink-soft); font-size:0.85rem; margin:0; }
+  footer a { font-size:0.85rem; text-decoration:none; color: var(--ink-soft); }
+  footer a:hover { color: var(--ink); }
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: repeat(2,1fr); }
+    .steps { grid-template-columns: 1fr; }
+    nav ul { gap:16px; }
+  }
+  @media (max-width: 520px) {
+    .grid, .grid.small { grid-template-columns: 1fr; }
+    .wrap { padding: 0 20px; }
+  }
+</style>
+
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="logo serif" href="index.html">Connecting Dots</a>
+    <ul>
+      <li><a class="navlink" href="index.html">Home</a></li>
+      <li><a class="navlink" href="candles.html">Candles</a></li>
+      <li><a class="navlink" href="resin.html">Resin Art</a></li>
+      <li><a class="navlink active" href="custom.html">Custom Orders</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-hero wrap">
+  <h1>Custom Orders</h1>
+  <p>Have a color palette, occasion, or bulk order in mind? Every candle and resin piece can be customized — here's how it works.</p>
+</section>
+<section class="wrap">
+  <div class="steps">
+    <div class="step">
+      <div class="num serif">01</div>
+      <h3>Message on WhatsApp</h3>
+      <p>Send a message to +61 452 281 870 with what you're after — occasion, quantity, and any color or design preferences.</p>
+    </div>
+    <div class="step">
+      <div class="num serif">02</div>
+      <h3>Get a quote</h3>
+      <p>Shilpi will confirm pricing, turnaround time, and any design details before you commit.</p>
+    </div>
+    <div class="step">
+      <div class="num serif">03</div>
+      <h3>Receive your order</h3>
+      <p>Once approved, your custom pieces are hand-made, gift packed, and shipped to you.</p>
+    </div>
+  </div>
+  <a class="btn" href="https://wa.me/61452281870">Message on WhatsApp</a>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© Connecting Dots Art & Soul Retreat</p>
+    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
+      <a href="https://instagram.com/connecting_dots11" target="_blank" rel="noopener">Instagram: @connecting_dots11</a>
+      <a href="https://wa.me/61452281870">WhatsApp: +61 452 281 870</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studio Shop — Original Art & Prints</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF8F3;
+    --ink: #211F1C;
+    --ink-soft: #55504A;
+    --indigo: #2E3A59;
+    --gold: #B8902B;
+    --card: #F1EDE3;
+    --line: #DDD6C8;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.5;
+  }
+  h1, h2, h3, .serif { font-family: 'Fraunces', Georgia, serif; }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  header {
+    position: sticky; top: 0; top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: rgba(250,248,243,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 18px; padding-bottom: 18px;
+  }
+  .logo { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+  nav ul { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
+  nav a { text-decoration: none; font-size: 0.95rem; color: var(--ink-soft); }
+  nav a:hover { color: var(--ink); }
+
+  .hero {
+    padding: 88px 0 72px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: end;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+    font-weight: 400;
+    line-height: 1.04;
+    margin: 0 0 24px;
+    max-width: 14ch;
+  }
+  .hero .lede {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 38ch;
+    margin: 0 0 28px;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--indigo);
+    color: #fff;
+    padding: 13px 26px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .btn:hover { background: #24304A; }
+  .hero-side {
+    border-left: 1px solid var(--line);
+    padding-left: 32px;
+  }
+  .hero-side p { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+  .shop { padding: 72px 0; }
+  .shop-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 36px; flex-wrap: wrap; gap: 12px;
+  }
+  .shop-head h2 { font-size: 1.8rem; font-weight: 400; margin: 0; }
+  .shop-head p { color: var(--ink-soft); margin: 0; font-size: 0.95rem; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .product {
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  .product .frame {
+    aspect-ratio: 4 / 5;
+    background: #E4DECE;
+    display: flex; align-items: center; justify-content: center;
+    color: #A89F8C;
+    font-size: 0.85rem;
+    overflow: hidden;
+  }
+  .product .frame img { width: 100%; height: 100%; object-fit: cover; }
+  .product .info { padding: 18px 20px 20px; }
+  .product h3 { font-size: 1.05rem; font-weight: 500; margin: 0 0 6px; }
+  .product .desc { color: var(--ink-soft); font-size: 0.88rem; margin: 0 0 14px; }
+  .product .row {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .price { font-family: 'Fraunces', serif; font-size: 1.15rem; }
+  .buy {
+    font-size: 0.85rem; font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 1px;
+  }
+  .buy:hover { color: var(--gold); }
+
+  .about {
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .about h2 { font-size: 1.8rem; font-weight: 400; margin: 0 0 18px; }
+  .about p { color: var(--ink-soft); margin: 0 0 14px; max-width: 48ch; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0 48px;
+    padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px));
+  }
+  footer .wrap {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  footer p { color: var(--ink-soft); font-size: 0.85rem; margin: 0; }
+  footer a { font-size: 0.85rem; text-decoration: none; color: var(--ink-soft); }
+  footer a:hover { color: var(--ink); }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 24px; padding: 56px 0 48px; }
+    .hero-side { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 20px; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .about { grid-template-columns: 1fr; }
+    nav ul { gap: 18px; }
+  }
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr; }
+    .wrap { padding: 0 20px; }
+  }
+
+  :root:not([data-theme="light"]) {}
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1B1A17; --ink: #F3F0E8; --ink-soft: #B6AFA1;
+      --card: #242220; --line: #3A362F; --indigo: #7C8FBF; --gold: #D8B65C;
+    }
+    header { background: rgba(27,26,23,0.92); }
+    .product .frame { background: #2E2B26; color: #6F6A5E; }
+    .btn { color: #1B1A17; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo serif">Studio Shop</div>
+    <ul>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero wrap">
+  <div>
+    <h1>Original art and prints, made by hand.</h1>
+    <p class="lede">Small-batch paintings, giclée prints, and one-off pieces — each one shipped straight from the studio.</p>
+    <a class="btn" href="#shop">Browse the shop</a>
+  </div>
+  <div class="hero-side">
+    <p>Every print is signed and numbered. Originals are one of one — once it's sold, it's gone.</p>
+  </div>
+</section>
+
+<section class="shop wrap" id="shop">
+  <div class="shop-head">
+    <h2 class="serif">Available now</h2>
+    <p>Checkout via Square · ships in 3–5 days</p>
+  </div>
+  <div class="grid">
+
+    <div class="product">
+      <div class="frame">product photo</div>
+      <div class="info">
+        <h3>Quiet Harbor</h3>
+        <p class="desc">Original gouache on paper, 9×12in</p>
+        <div class="row">
+          <span class="price">$145</span>
+          <a class="buy" href="#" target="_blank" rel="noopener">Buy on Square →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="frame">product photo</div>
+      <div class="info">
+        <h3>Low Tide, No. 2</h3>
+        <p class="desc">Giclée print, 11×14in, edition of 50</p>
+        <div class="row">
+          <span class="price">$38</span>
+          <a class="buy" href="#" target="_blank" rel="noopener">Buy on Square →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="frame">product photo</div>
+      <div class="info">
+        <h3>Field Notes</h3>
+        <p class="desc">Original ink drawing, 8×10in</p>
+        <div class="row">
+          <span class="price">$95</span>
+          <a class="buy" href="#" target="_blank" rel="noopener">Buy on Square →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="frame">product photo</div>
+      <div class="info">
+        <h3>After the Rain</h3>
+        <p class="desc">Giclée print, 16×20in, edition of 25</p>
+        <div class="row">
+          <span class="price">$62</span>
+          <a class="buy" href="#" target="_blank" rel="noopener">Buy on Square →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="frame">product photo</div>
+      <div class="info">
+        <h3>Studio Window</h3>
+        <p class="desc">Original oil on canvas, 12×16in</p>
+        <div class="row">
+          <span class="price">$210</span>
+          <a class="buy" href="#" target="_blank" rel="noopener">Buy on Square →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="frame">product photo</div>
+      <div class="info">
+        <h3>Postcard Set</h3>
+        <p class="desc">6 printed postcards, archival stock</p>
+        <div class="row">
+          <span class="price">$18</span>
+          <a class="buy" href="#" target="_blank" rel="noopener">Buy on Square →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about wrap" id="about">
+  <div>
+    <h2 class="serif">About the studio</h2>
+    <p>Write a couple of sentences here about who you are, how you work, and what materials you use. People buying original art want a sense of the hand behind it.</p>
+    <p>Mention where you're based, how long you've been making work, and anything about your process worth knowing before someone buys.</p>
+  </div>
+  <div>
+    <h2 class="serif">How it works</h2>
+    <p>Each listing links out to a Square checkout page. Pick a piece, complete payment on Square's secure page, and you'll get a confirmation email with shipping details.</p>
+    <p>Originals are one-of-a-kind — once sold, the listing will be marked sold or removed.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Studio Shop</p>
+    <a href="mailto:hello@example.com" id="contact">hello@example.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
